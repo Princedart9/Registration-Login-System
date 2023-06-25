@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registration | Login</title>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<style type="text/css">
+
+</style>
+</head>
+<body>
+
+	<!-- Create Navigation Bar!! -->
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Registration Application</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="#">Register</a></li>
+	      <li><a href="#">Page 1</a></li>
+	      <li><a href="#">Page 2</a></li>
+	      <li><a href="#">Page 3</a></li>
+	    </ul>
+	    <button class="btn btn-danger navbar-btn">Pending</button>
+	    <span style="color:white; margin-left:20px;"><a href="/" th:href="@{/logout}"><b>logout</b></a></span>
+	  </div>
+	</nav>
+	
+	<!-- Create HTML Form!! -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+					
+			<!-- Success Message -->
+				<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully registered to Our Awesome Application!!</div>
+				</div>
+				
+				<h1 style="margin-bottom: 10px;">Registration</h1>
+				
+				<form th:action="@{/registration}" method="post" th:object="${user}">
+					<div class="form-group">
+					    <label class="text-primary" for="userName">User Name : </label>
+					    <input type="text" class="form-control" id="userName" th:field="*{name}" required autofocus="autofocus" placeholder="Enter User Name Here!!">
+					</div>
+					<div class="form-group">
+					    <label class="text-primary" for="address">Address : </label>
+					    <input type="text" class="form-control" id="address" th:field="*{Address}" required autofocus="autofocus" placeholder="Enter">
+					</div>
+					<div class="form-group">
+					    <label class="text-primary" for="mobileNo">Mobile Number:</label>
+					    <input type="text" class="form-control" id="mobileNo" th:field="*{mobileNo}" required autofocus="autofocus" placeholder="Enter">
+					</div>
+					<div class="form-group">
+					    <label class="text-primary" for="emailID">EmailID :</label>
+					    <input type="text" class="form-control" id="emailID" th:field="*{emailID}" required autofocus="autofocus" placeholder="Enter">
+					</div>
+					
+					<button type="submit" class="btn btn-success">Register</button>
+					<span>Already Registered? <a href="/" th:href="@{/login}">login here</a></span>
+					
+				</form>	
+			</div>
+		</div>
+	</div>
+	
+	
+	
+</body>
+</html>
